@@ -1,0 +1,20 @@
+{
+    "name": "nodejs-hw01",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lex-od/nodejs-hw01.git"
+    },
+    "keywords": [],
+    "author": "Aleksey Yesin <esinru@gmail.com>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/lex-od/nodejs-hw01/issues"
+    },
+    "homepage": ""
+}
