@@ -3,23 +3,16 @@ const path = require("path");
 
 const contactsPath = path.join(__dirname, "db", "contacts.json");
 
-async function getContacts() {
-    const buffer = await fs.readFile(contactsPath);
-    contacts = JSON.parse(buffer);
+const getContacts = async () => JSON.parse(await fs.readFile(contactsPath));
 
-    return contacts;
-}
+const getContactById = async (contId) =>
+    (await getContacts()).find(({ id }) => id === contId);
 
-async function getContactById(contactId) {
-    const buffer = await fs.readFile(contactsPath);
-    contacts = JSON.parse(buffer);
+const removeContact = async (contId) => {
+    const newContacts = (await getContacts()).filter(({ id }) => id !== contId);
 
-    return contacts.find(({ id }) => id === contactId);
-}
-
-async function removeContact(contactId) {
-    // ...твой код
-}
+    fs.writeFile(contactsPath, JSON.stringify(newContacts));
+};
 
 async function addContact(name, email, phone) {
     // ...твой код
