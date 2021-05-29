@@ -10,15 +10,18 @@ async function getContacts() {
     return contacts;
 }
 
-function getContactById(contactId) {
+async function getContactById(contactId) {
+    const buffer = await fs.readFile(contactsPath);
+    contacts = JSON.parse(buffer);
+
+    return contacts.find(({ id }) => id === contactId);
+}
+
+async function removeContact(contactId) {
     // ...твой код
 }
 
-function removeContact(contactId) {
-    // ...твой код
-}
-
-function addContact(name, email, phone) {
+async function addContact(name, email, phone) {
     // ...твой код
 }
 
