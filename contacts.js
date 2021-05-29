@@ -1,5 +1,6 @@
 const fs = require("fs").promises;
 const path = require("path");
+const shortid = require("shortid");
 
 const contactsPath = path.join(__dirname, "db", "contacts.json");
 
@@ -11,12 +12,16 @@ const getContactById = async (contId) =>
 const removeContact = async (contId) => {
     const newContacts = (await getContacts()).filter(({ id }) => id !== contId);
 
-    fs.writeFile(contactsPath, JSON.stringify(newContacts));
+    await fs.writeFile(contactsPath, JSON.stringify(newContacts));
 };
 
-async function addContact(name, email, phone) {
-    // ...твой код
-}
+const addContact = async (name, email, phone) => {
+    const contacts = await getContacts();
+
+    contacts.push({ id: shortid(), name, email, phone });
+
+    await fs.writeFile(contactsPath, JSON.stringify(contacts));
+};
 
 module.exports = {
     getContacts,
