@@ -32,6 +32,6 @@ const {
                 console.warn("\x1B[31m Unknown action type!");
         }
     } catch (err) {
-        console.log(err.name, err.message);
+        console.log(`${err.name}! ${err.message}`);
     }
 })(argv);
